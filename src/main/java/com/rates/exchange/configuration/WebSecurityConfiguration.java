@@ -32,7 +32,9 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/**").hasAnyRole("ROLE_USER")
                 .and()
-                .formLogin().loginPage("/login").permitAll();
+                .formLogin().loginPage("/login").permitAll()
+                .and()
+                .exceptionHandling().accessDeniedPage("/error");
     }
     //{bcrypt}$2a$10$sRtNoEI0qIZNJAeuuFs9Z.ivxNElKLR5gWWNqm218hZN6fMRK.Rwm
 

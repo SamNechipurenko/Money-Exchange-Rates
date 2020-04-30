@@ -23,7 +23,9 @@
                 <td><input type="text" name="email" value="email"></td>
             </tr>
             <tr>
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                <td>
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                </td>
                 <td><input type="submit" value="add user" /></td>
             </tr>
 
@@ -44,8 +46,9 @@
 
         </tr>
         </#foreach>
-
     </table>
-
+    <form action="/" method="GET">
+        <input type="submit" value="Go to home page">
+    </form>
 
 </body>

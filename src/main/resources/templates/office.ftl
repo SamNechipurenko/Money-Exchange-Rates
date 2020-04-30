@@ -29,6 +29,13 @@
                     <input type="submit" value="change my password"/>
                 </td>
             </tr>
+            <tr>
+                <td>
+                    <form action="/" method="GET">
+                        <input type="submit" value="Go to home page">
+                    </form>
+                </td>
+            </tr>
         </table>
     </form>
     <#if (exceptionMsg != "OK")>

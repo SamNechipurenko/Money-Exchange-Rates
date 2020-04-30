@@ -32,7 +32,7 @@ public class ExchangeController {
 
     MoneyRatesService moneyRatesService = new MoneyRatesService();
     CryptaRatesService cryptaRatesService = new CryptaRatesService();
-
+    // home page
     @GetMapping("/")
     public String main(Model mav){
         principal =(UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -42,6 +42,7 @@ public class ExchangeController {
         mav.addAttribute("username", username);
         return "main";
     }
+    // add new user
     @PostMapping("/addNewUser")
     public String addNewUser(@RequestParam("username") String username,
                              @RequestParam("email") String email,
@@ -55,7 +56,7 @@ public class ExchangeController {
         return"redirect:/users";
     }
 
-
+    // show current rates
     @GetMapping("/currents")
     public String currents(Model mav){
         // Money
@@ -87,7 +88,7 @@ public class ExchangeController {
         mav.addAttribute("ethToUsd", ethToUsd);
         return "currents";
     }
-
+    // watch all users info
     @GetMapping("/users")
     public String users(@NotNull Model mav, @RequestParam("exceptionMsg") String exceptionMsg){
         List<User> userList = userService.findAllUsers();
@@ -95,7 +96,7 @@ public class ExchangeController {
         mav.addAttribute("exceptionMsg", exceptionMsg);
         return "users";
     }
-
+    // get user account
     @GetMapping("/account")
     public String office(Model mav, @RequestParam("exceptionMsg") String exceptionMsg){
         User user = userService.findUserByUsername(username);
@@ -105,7 +106,7 @@ public class ExchangeController {
         mav.addAttribute("exceptionMsg", exceptionMsg);
         return "office";
     }
-
+    // change password
     @PostMapping("/changeData")
     public String changeData(@RequestParam("password") String password,
                              RedirectAttributes redirectAttributes){
@@ -113,6 +114,11 @@ public class ExchangeController {
         String editUserMsg = userService.editUser(username, password);
         redirectAttributes.addAttribute("exceptionMsg", editUserMsg);
         return"redirect:/account";
+    }
+    // handle error
+    @GetMapping("/error")
+    public String handleError() {
+        return "error";
     }
 
 

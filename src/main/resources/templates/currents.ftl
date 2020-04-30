@@ -49,7 +49,13 @@
             <td>BTC/UAH</td>
             <td>${btcToUah}</td>
         </tr>
-
-
+        <tr>
+            <td>
+                <form action="/" method="GET">
+                    <input type="submit" value="Go to home page">
+                </form>
+            </td>
+        </tr>
     </table>
+
 </body>
